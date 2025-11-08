@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cwe20a0wekhkh"]
 
 [ext_resource type="Texture2D" uid="uid://bv6r6ahmqti67" path="res://player.png" id="1_6nbsm"]
-[ext_resource type="Script" path="res://player.gd" id="1_lxchc"]
+[ext_resource type="Script" uid="uid://drvaa066qqd6b" path="res://player.gd" id="1_lxchc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hvi4x"]
 atlas = ExtResource("1_6nbsm")
@@ -72,4 +72,5 @@ frame_progress = 0.344927
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_d1jo4")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="hit" from="." to="." method="_on_hit"]
