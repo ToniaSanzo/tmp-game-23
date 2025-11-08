@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1762609256
+::res://::1762610357
 hud.gd::GDScript::6452199815817237521::1762573953::0::1::::<>CanvasLayer<><>0<>0<><>::
 hud.tscn::PackedScene::7518077892778278210::1762609246::0::1::::<><><>0<>0<><>::uid://dqqq0ch2fwwgl::::res://art/Manufacturing_Consent/ManufacturingConsent-Regular.ttf<>uid://cx6q12i5catg0::::res://hud.gd
 icon.svg::CompressedTexture2D::7192999206383290128::1762573953::1762573997::1::::<><><>0<>0<>4fcee7ab01678ef02bcc206b82f4ae67<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
@@ -9,9 +9,13 @@ mob.gd::GDScript::3889554963577598355::1762573953::0::1::::<>RigidBody2D<><>0<>0
 mob.tscn::PackedScene::4830009329796416082::1762609256::0::1::::<><><>0<>0<><>::uid://bvoenwxnbyfgd::::res://mob.gd<>uid://c67iu4cm3jl2w::::res://art/mob.png
 player.gd::GDScript::8395825688164312395::1762574855::0::1::::<>Area2D<><>0<>0<><>::
 player.tscn::PackedScene::6326937481716907143::1762609256::0::1::::<><><>0<>0<><>::uid://bv6r6ahmqti67::::res://art/player.png<>uid://drvaa066qqd6b::::res://player.gd
-::res://art/::1762609256
+bullet.tscn::PackedScene::8805097973317900607::1762610357::0::1::::<><><>0<>0<><>::uid://dua1fifxt8vqt::::res://art/bullet.png<>uid://cukqfl7g0k38w::::res://bullet.gd
+bullet.gd::GDScript::6198243046038275848::1762610357::0::1::::<>Area2D<><>0<>0<><>::
+::res://art/::1762610562
 background.png::CompressedTexture2D::2938781075689569294::1762573953::1762609256::1::::<><><>0<>0<>25798693e9b5147fca8469dda8931858<>res://.godot/imported/background.png-694afb2807fe739c9f0954541e14cf0b.ctex::
 background_music.mp3::AudioStreamMP3::9058383206145394256::1762573297::1762609256::1::::<><><>0<>0<>f2d689b1d5c527f9743fc36383829154<>res://.godot/imported/background_music.mp3-add2d7eb77efa2d5d679e1b3ebea97ef.mp3str::
+beer.png::CompressedTexture2D::1109332234872256979::1762610562::1762610679::1::::<><><>0<>0<>5bccfa8ccb0563bac8c8609dfa6330d9<>res://.godot/imported/beer.png-497722d8750ffa8289b6b3a3c73b9e43.ctex::
+bullet.png::CompressedTexture2D::8564626923603953631::1762609619::1762609654::1::::<><><>0<>0<>0f1cedc196f67b56b4876a7ba2324d35<>res://.godot/imported/bullet.png-7adc94fbe6e31c193382926bba42bd83.ctex::
 deathsound.mp3::AudioStreamMP3::7751066925659964129::1762573485::1762609256::1::::<><><>0<>0<>a68253e32cd5854576ea7c2dbef5a1cc<>res://.godot/imported/deathsound.mp3-ddbdede36189124ca1b5a6627d1da4e8.mp3str::
 mob.png::CompressedTexture2D::7015278586965121376::1762573953::1762609256::1::::<><><>0<>0<>d7ac13a51241d85bb71781d76fa2d399<>res://.godot/imported/mob.png-6847027d6b96fb5adc5be7984c350c88.ctex::
 player.png::CompressedTexture2D::3925469670336710326::1762573953::1762609256::1::::<><><>0<>0<>6ecbba75d6e212996f4cdb69d09d2ba4<>res://.godot/imported/player.png-99d195b4b10a03b7e1088962b50c29f4.ctex::
