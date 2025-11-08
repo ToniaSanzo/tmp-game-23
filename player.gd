@@ -10,6 +10,7 @@ var shooting
 var remaining_health := PlayerConstant.MAX_HEALTH
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite2D.z_index = 9
 	hide()
 	$AnimatedSprite2D.animation = "idle"
 	screen_size = get_viewport_rect().size
@@ -62,6 +63,7 @@ func shoot(angle):
 	b.setup(angle)
 	owner.add_child(b)
 	b.transform = $Muzzle.global_transform
+	$Gunshot.play()
 	
 func start(pos):
 	remaining_health = PlayerConstant.MAX_HEALTH

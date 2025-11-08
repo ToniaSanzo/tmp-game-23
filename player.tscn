@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwe20a0wekhkh"]
+[gd_scene load_steps=12 format=3 uid="uid://cwe20a0wekhkh"]
 
 [ext_resource type="Texture2D" uid="uid://bv6r6ahmqti67" path="res://art/player.png" id="1_6nbsm"]
 [ext_resource type="Script" uid="uid://drvaa066qqd6b" path="res://player.gd" id="1_lxchc"]
 [ext_resource type="PackedScene" uid="uid://dxpixa24ryds6" path="res://bullet.tscn" id="2_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://cjtegm2xafl0f" path="res://art/gunshot.mp3" id="4_hqtel"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hvi4x"]
 atlas = ExtResource("1_6nbsm")
@@ -75,6 +76,9 @@ frame_progress = 0.344927
 shape = SubResource("CapsuleShape2D_d1jo4")
 
 [node name="Muzzle" type="Marker2D" parent="."]
+
+[node name="Gunshot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hqtel")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="hit" from="." to="." method="_on_hit"]

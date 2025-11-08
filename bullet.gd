@@ -4,7 +4,7 @@ extends Area2D
 var direction : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	rotation = PI / 2
+	$Sprite2D.z_index = 8
 	pass # Replace with function body.
 
 
