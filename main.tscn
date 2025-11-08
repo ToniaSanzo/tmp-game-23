@@ -45,7 +45,8 @@ curve = SubResource("Curve2D_q4pc1")
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 position = Vector2(-0.08605957, 0)
 
-[node name="HUD" parent="." instance=ExtResource("4_5xsd8")]
+[node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_5xsd8")]
+player = NodePath("../Player")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_272bh")
@@ -53,7 +54,7 @@ stream = SubResource("AudioStreamMP3_272bh")
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_7mycd")
 
-[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="die" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

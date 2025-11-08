@@ -1,9 +1,13 @@
 extends Area2D
-signal hit
+class_name Player
+
+signal hit(remaining_health: int)
+signal die
 @export var speed = 400
 @export var bullet : PackedScene
 var screen_size
 var shooting
+var remaining_health := PlayerConstant.MAX_HEALTH
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
@@ -60,13 +64,21 @@ func shoot(angle):
 	b.transform = $Muzzle.global_transform
 	
 func start(pos):
+	remaining_health = PlayerConstant.MAX_HEALTH
+	hit.emit(remaining_health)
+	
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
 
 
 func _on_body_entered(body: Node2D) -> void:
-	hide() # Player disappears after being hit.
-	hit.emit()
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
+	remaining_health -= 20
+	hit.emit(remaining_health)
+	
+	
+	if remaining_health <= 0:
+		die.emit()
+		hide() # Player disappears after being hit.
+		# Must be deferred as we can't change physics properties on a physics callback.
+		$CollisionShape2D.set_deferred("disabled", true)
