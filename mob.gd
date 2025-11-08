@@ -3,7 +3,7 @@ extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimatedSprite2D.z_index = 10
+	$AnimatedSprite2D.z_index = 8
 	var mob_types = Array($AnimatedSprite2D.sprite_frames.get_animation_names())
 	$AnimatedSprite2D.animation = mob_types.pick_random()
 	$AnimatedSprite2D.play()

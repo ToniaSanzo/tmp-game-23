@@ -3,10 +3,9 @@
 [ext_resource type="Script" uid="uid://bvoenwxnbyfgd" path="res://mob.gd" id="1_03vp4"]
 [ext_resource type="Texture2D" uid="uid://c67iu4cm3jl2w" path="res://art/mob.png" id="1_a6ybe"]
 
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_frs4h"]
-radius = 28.0
-height = 74.0
+radius = 48.0
+height = 128.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08vpk"]
 atlas = ExtResource("1_a6ybe")

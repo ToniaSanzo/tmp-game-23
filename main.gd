@@ -1,6 +1,7 @@
 extends Node
 
 @export var mob_scene: PackedScene
+@export var health_loot: PackedScene
 var score
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +29,7 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
+	get_tree().call_group("loot", "queue_free")
 
 
 func _on_mob_timer_timeout():
@@ -36,17 +38,17 @@ func _on_mob_timer_timeout():
 
 	# Choose a random location on Path2D.
 	var mob_spawn_location = $MobPath/MobSpawnLocation
+	
 	mob_spawn_location.progress_ratio = randf()
 
 	# Set the mob's position to the random location.
 	mob.position = mob_spawn_location.position
-
+	
 	# Set the mob's direction perpendicular to the path direction.
 	var direction = mob_spawn_location.rotation + PI / 2
 
 	# Add some randomness to the direction.
 	direction += randf_range(-PI / 4, PI / 4)
-	#mob.rotation = direction
 	
 	
 
@@ -67,4 +69,16 @@ func _on_score_timer_timeout():
 
 func _on_start_timer_timeout():
 	$MobTimer.start()
+	$LootTimer.start()
 	$ScoreTimer.start()
+
+
+func _on_loot_timer_timeout() -> void:
+	# Create a new loot instance
+	var health = health_loot.instantiate()
+	
+	# Set a random loot location
+	health.position = Vector2(get_window().size.x * randf(), get_window().size.y * randf())
+
+	# Add loot to the Main scene.
+	add_child(health)

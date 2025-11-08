@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcamjt1m2ro4i"]
+
+[ext_resource type="Texture2D" uid="uid://ota8vth26g4u" path="res://art/health.png" id="1_ledv5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ledv5"]
+size = Vector2(48, 48)
+
+[node name="health" type="RigidBody2D" groups=["loot"]]
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ledv5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_ledv5")

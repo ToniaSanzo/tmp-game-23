@@ -75,6 +75,15 @@ func start(pos):
 
 
 func _on_body_entered(body: Node2D) -> void:
+	print("Body entered: ", body.name)
+	if body.is_in_group("loot"):
+		print("healing")
+		if remaining_health < PlayerConstant.MAX_HEALTH:
+			remaining_health += 20
+			hit.emit(remaining_health)
+			body.queue_free()
+		return
+	
 	remaining_health -= 20
 	hit.emit(remaining_health)
 	
