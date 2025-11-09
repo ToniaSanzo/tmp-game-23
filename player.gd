@@ -2,12 +2,15 @@ extends Area2D
 class_name Player
 
 signal hit(remaining_health: int)
+signal reload(ammo: int)
 signal die
 @export var speed = 400
 @export var bullet : PackedScene
 var screen_size
-var shooting
+#var shooting
 var remaining_health := PlayerConstant.MAX_HEALTH
+@export var ammo = 5
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.z_index = 9
@@ -59,11 +62,14 @@ func _input(event):
 		# var global_pos = get_global_mouse_position()
 
 func shoot(angle):
-	var b = bullet.instantiate()
-	b.setup(angle)
-	owner.add_child(b)
-	b.transform = $Muzzle.global_transform
-	$Gunshot.play()
+	if ammo != 0:
+		var b = bullet.instantiate()
+		b.setup(angle)
+		owner.add_child(b)
+		b.transform = $Muzzle.global_transform
+		$Gunshot.play()
+		ammo -= 1
+		reload.emit(ammo)
 	
 func start(pos):
 	remaining_health = PlayerConstant.MAX_HEALTH
@@ -75,18 +81,21 @@ func start(pos):
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Body entered: ", body.name)
-	if body.is_in_group("loot"):
-		print("healing")
+	if body.is_in_group("health_loot"):
 		if remaining_health < PlayerConstant.MAX_HEALTH:
 			remaining_health += 20
 			hit.emit(remaining_health)
 			body.queue_free()
 		return
+		
+	elif body.is_in_group("ammo_loot"):
+		ammo += 5
+		reload.emit(ammo)
+		body.queue_free()
+		return
 	
 	remaining_health -= 20
 	hit.emit(remaining_health)
-	
 	
 	if remaining_health <= 0:
 		die.emit()

@@ -2,6 +2,7 @@ extends Node
 
 @export var mob_scene: PackedScene
 @export var health_loot: PackedScene
+@export var ammo_loot: PackedScene
 var score
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +20,7 @@ func game_over():
 	$DeathSound.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$LootTimer.stop()
 	$HUD.show_game_over()
 
 func new_game():
@@ -29,7 +31,8 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
-	get_tree().call_group("loot", "queue_free")
+	get_tree().call_group("health_loot", "queue_free")
+	get_tree().call_group("ammo_loot", "queue_free")
 
 
 func _on_mob_timer_timeout():
@@ -74,11 +77,18 @@ func _on_start_timer_timeout():
 
 
 func _on_loot_timer_timeout() -> void:
-	# Create a new loot instance
-	var health = health_loot.instantiate()
 	
+	var rand = randf()
+	var loot
+	
+	if rand < .5:
+		# Create a new loot instance
+		loot = health_loot.instantiate()
+	else:
+		loot = ammo_loot.instantiate()
+		
 	# Set a random loot location
-	health.position = Vector2(get_window().size.x * randf(), get_window().size.y * randf())
+	loot.position = Vector2(get_window().size.x * randf(), get_window().size.y * randf())
 
 	# Add loot to the Main scene.
-	add_child(health)
+	add_child(loot)

@@ -3,11 +3,13 @@ extends CanvasLayer
 @export var player: Player
 @onready var health_bar: ProgressBar = $TopHUD/HealthBar
 @onready var score_label: Label = $TopHUD/ScoreLabel
+@onready var ammo_label: Label = $TopHUD/HealthBar/AmmoLabel
 
 signal start_game
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.hit.connect(update_health.bind(PlayerConstant.MAX_HEALTH))
+	player.reload.connect(update_ammo.bind())
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,6 +38,9 @@ func update_health(current_health: int, max_health: int):
 
 func update_score(score):
 	score_label.text = str(score)
+	
+func update_ammo(ammo):
+	ammo_label.text = str("Ammo: ", ammo)
 
 func _on_start_button_pressed():
 	$StartButton.hide()
