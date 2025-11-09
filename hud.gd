@@ -3,8 +3,10 @@ extends CanvasLayer
 @export var player: Player
 @onready var health_bar: ProgressBar = $TopHUD/HealthBar
 @onready var score_label: Label = $TopHUD/ScoreLabel
+@onready var high_score_label: Label = $TopHUD/HighScoreLabel
 @onready var ammo_label: Label = $TopHUD/HealthBar/AmmoLabel
 
+var high_score = 0
 signal start_game
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +39,9 @@ func update_health(current_health: int, max_health: int):
 	health_bar.max_value = max_health
 
 func update_score(score):
+	if score > high_score:
+		high_score = score
+		high_score_label.text = str("High Score: ", high_score)
 	score_label.text = str(score)
 	
 func update_ammo(ammo):

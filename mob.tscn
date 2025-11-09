@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c67iu4cm3jl2w" path="res://art/mob.png" id="1_a6ybe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_frs4h"]
-radius = 48.0
-height = 128.0
+radius = 15.999971
+height = 31.999943
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08vpk"]
 atlas = ExtResource("1_a6ybe")

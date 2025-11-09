@@ -31,6 +31,13 @@ theme_override_fonts/font = ExtResource("1_mdnvw")
 theme_override_font_sizes/font_size = 32
 text = "Ammo: 5"
 
+[node name="HighScoreLabel" type="Label" parent="TopHUD"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_mdnvw")
+theme_override_font_sizes/font_size = 32
+text = "High Score: 0"
+
 [node name="ScoreLabel" type="Label" parent="TopHUD"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_mdnvw")

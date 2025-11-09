@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ota8vth26g4u" path="res://art/health.png" id="1_ledv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ledv5"]
-size = Vector2(48, 48)
+size = Vector2(112, 112)
 
 [node name="health" type="RigidBody2D" groups=["health_loot"]]
 collision_mask = 0

@@ -3,9 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dua1fifxt8vqt" path="res://art/bullet.png" id="1_v7oki"]
 [ext_resource type="Script" uid="uid://cukqfl7g0k38w" path="res://bullet.gd" id="1_v8qja"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_v8qja"]
-a = Vector2(459.5, -2.0980835e-05)
-b = Vector2(-412.5, -2.0980835e-05)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
+size = Vector2(160, 64)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_v8qja")
@@ -16,8 +15,8 @@ scale = Vector2(8, 0.1)
 texture = ExtResource("1_v7oki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(124.5, 2.0980835e-05)
-shape = SubResource("SegmentShape2D_v8qja")
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_v8qja")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

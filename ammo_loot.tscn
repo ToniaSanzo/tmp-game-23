@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://eb3fsj11g0ly" path="res://art/bullet_loot.png" id="1_ljabt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ledv5"]
-size = Vector2(48, 48)
+size = Vector2(112, 112)
 
 [node name="ammo_loot" type="RigidBody2D" groups=["ammo_loot"]]
 collision_mask = 0
