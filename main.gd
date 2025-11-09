@@ -78,18 +78,18 @@ func _on_start_timer_timeout():
 
 
 func _on_loot_timer_timeout() -> void:
-	
-	var rand = randf()
-	var loot
-	
-	if rand < .5:
-		# Create a new loot instance
-		loot = health_loot.instantiate()
-	else:
-		loot = ammo_loot.instantiate()
+	for i in 3:
+		var rand = randf()
+		var loot
 		
-	# Set a random loot location
-	loot.position = Vector2(get_window().size.x * randf(), get_window().size.y * randf())
+		if rand < .5:
+			# Create a new loot instance
+			loot = health_loot.instantiate()
+		else:
+			loot = ammo_loot.instantiate()
+			
+		# Set a random loot location
+		loot.position = Vector2(get_window().size.x * randf(), get_window().size.y * randf())
 
-	# Add loot to the Main scene.
-	add_child(loot)
+		# Add loot to the Main scene.
+		add_child(loot)
