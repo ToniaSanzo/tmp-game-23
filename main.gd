@@ -29,6 +29,7 @@ func new_game():
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
+	$HUD.update_ammo(PlayerConstant.START_AMMO)
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
 	get_tree().call_group("health_loot", "queue_free")

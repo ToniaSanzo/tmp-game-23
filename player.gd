@@ -9,7 +9,7 @@ signal die
 var screen_size
 #var shooting
 var remaining_health := PlayerConstant.MAX_HEALTH
-@export var ammo = 5
+var ammo := PlayerConstant.START_AMMO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,8 +30,14 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-	#if Input.is_action_pressed("shoot"):
-		#shoot()
+	if Input.is_action_just_pressed("special"):
+		bullet_storm()
+	
+	
+	if Input.is_action_pressed("special"):
+		$AnimatedSprite2D.animation = "block"
+		velocity = Vector2.ZERO
+		return 
 		
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -39,6 +45,8 @@ func _process(delta):
 		
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+	
+	
 	
 	if velocity != Vector2.ZERO:
 		$AnimatedSprite2D.animation = "walk"
@@ -55,6 +63,7 @@ func _input(event):
 		
 		var angle = (event.position - position).angle()
 		shoot(angle)
+		
 		# Example: Move a sprite to the click position
 		
 		
@@ -70,9 +79,21 @@ func shoot(angle):
 		$Gunshot.play()
 		ammo -= 1
 		reload.emit(ammo)
+
+func bullet_storm():
+	if ammo > 25:
+		for i in 25:
+			var b = bullet.instantiate()
+			b.setup(i * ((2 * PI) / 25))
+			owner.add_child(b)
+			b.transform = $Muzzle.global_transform
+			$Gunshot.play()
+		ammo -= 25
+		reload.emit(ammo)
 	
 func start(pos):
 	remaining_health = PlayerConstant.MAX_HEALTH
+	ammo = PlayerConstant.START_AMMO
 	hit.emit(remaining_health)
 	
 	position = pos
@@ -89,13 +110,14 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 		
 	elif body.is_in_group("ammo_loot"):
-		ammo += 5
+		ammo += 50
 		reload.emit(ammo)
 		body.queue_free()
 		return
 	
 	remaining_health -= 20
 	hit.emit(remaining_health)
+	body.queue_free()
 	
 	if remaining_health <= 0:
 		die.emit()
