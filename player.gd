@@ -37,6 +37,8 @@ func _process(delta):
 	if Input.is_action_pressed("special"):
 		$AnimatedSprite2D.animation = "block"
 		velocity = Vector2.ZERO
+		remaining_health += .09
+		hit.emit(remaining_health)
 		return 
 		
 	if velocity.length() > 0:
@@ -81,14 +83,15 @@ func shoot(angle):
 		reload.emit(ammo)
 
 func bullet_storm():
-	if ammo > 25:
-		for i in 25:
+	if ammo > 9:
+		for i in 9:
 			var b = bullet.instantiate()
-			b.setup(i * ((2 * PI) / 25))
+			b.setup(i * ((2 * PI) / 9))
 			owner.add_child(b)
 			b.transform = $Muzzle.global_transform
-			$Gunshot.play()
-		ammo -= 25
+			
+		$Gunshot.play()
+		ammo -= 9
 		reload.emit(ammo)
 	
 func start(pos):

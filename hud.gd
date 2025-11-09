@@ -26,7 +26,7 @@ func show_game_over():
 	# Wait until the MessageTimer has counted down.
 	await $MessageTimer.timeout
 
-	$Message.text = "Fight!"
+	$Message.text = "Arena"
 	$Message.show()
 	# Make a one-shot timer and wait for it to finish.
 	await get_tree().create_timer(1.0).timeout
